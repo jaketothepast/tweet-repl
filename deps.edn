@@ -1,0 +1,25 @@
+{:paths ["src" "resources"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        com.microsoft.playwright/playwright {:mvn/version "1.45.0"}
+        com.twitter/twitter-api-java-sdk {:mvn/version "2.0.3"}
+        ring/ring {:mvn/version "1.12.2"}
+        org.clojure/core.async {:mvn/version "1.6.681"}
+        com.github.seancorfield/honeysql {:mvn/version "2.6.1147"}
+        com.github.seancorfield/next.jdbc {:mvn/version "1.3.939"}
+        org.xerial/sqlite-jdbc {:mvn/version "3.46.0.0"}
+        clj-time/clj-time {:mvn/version "0.15.2"}
+        com.github.scribejava/scribejava {:git/url "https://github.com/scribejava/scribejava"
+                                          :git/sha "763a959f7b05ba5b9d3dabb39c8cd6511299c419"}}
+ :mvn/repos {"sonatype" {:url "https://org.sonatype.oss/content/repositories/snapshots"}}
+ :aliases
+ {:run-m {:main-opts ["-m" "com.jakewindle.autoposter"]}
+  :run-x {:ns-default com.jakewindle.autoposter
+          :exec-fn greet
+          :exec-args {:name "Clojure"}}
+  :build {:deps {io.github.clojure/tools.build
+                 {:mvn/version "0.9.6"}}
+          :ns-default build}
+  :test {:extra-paths ["test"]
+         :extra-deps {org.clojure/test.check {:mvn/version "1.1.1"}
+                      io.github.cognitect-labs/test-runner
+                      {:git/tag "v0.5.1" :git/sha "dfb30dd"}}}}}
