@@ -55,8 +55,10 @@
 
 (defn authorize-app []
   (let [creds (get-oauth2-credentials)]
-    (.setTwitterOauth2AccessToken twitter-api (.getAccessToken creds))
-    (.setTwitterOauth2RefreshToken twitter-api (.getRefreshToken creds))
+    (doto
+        twitter-api
+      (.getAccessToken creds)
+      (.getRefreshToken creds))
     (swap! twitter-atom assoc :api (TwitterApi. twitter-api))))
 
 (defn make-tweet-request
